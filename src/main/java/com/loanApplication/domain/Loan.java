@@ -1,10 +1,15 @@
 package com.loanApplication.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Range;
+
+import java.math.BigDecimal;
 
 @Builder
 @Getter
@@ -12,7 +17,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Loan {
 
-    private double amount;
+    @DecimalMin(value = "10000.00", message = "Loan amount must be greater than 10,000")
+    @DecimalMax(value = "5000000.00", message = "Loan amount must not exceed 5,000,000")
+    private BigDecimal amount;
+
+    @Range(min=6,max=360,message = "Tenure for loan should be between 6 to 360 months")
     private int tenureMonths;
     private Loan.Purpose purpose;
 
