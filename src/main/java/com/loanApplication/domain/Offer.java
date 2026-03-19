@@ -5,14 +5,16 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 public class Offer {
 
-    private float interestRate;
+    private BigDecimal interestRate;
     private int tenureMonths;
-    private double emi;
-    private double totalPayable;
+    private BigDecimal emi;
+    private BigDecimal totalPayable;
 }
