@@ -12,19 +12,15 @@ import java.util.List;
 
 public class EligibilityCheckServiceImpl implements IEligibilityCheckService {
 
-    private final IRiskBandService riskBandService;
     private final IEMICalculatorService emiCalculatorService;
 
-    public EligibilityCheckServiceImpl(IRiskBandService riskBandService, IEMICalculatorService emiCalculatorService) {
-        this.riskBandService = riskBandService;
+    public EligibilityCheckServiceImpl(IEMICalculatorService emiCalculatorService) {
         this.emiCalculatorService = emiCalculatorService;
     }
 
     public List<String> checkEligibility(LoanRequest loanRequest){
 
         List<String> rejectReasonList = new ArrayList<>();
-
-        LoanResponse.RiskBand riskBand = riskBandService.checkRiskBand(loanRequest.getApplicant().getCreditScore());
 
         if(loanRequest.getApplicant().getCreditScore() < 600){
             rejectReasonList.add("CREDIT SCORE IS LESS THAN 600");

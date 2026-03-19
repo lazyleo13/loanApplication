@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
+import java.util.UUID;
 
 @Builder
 @Getter
@@ -14,7 +15,7 @@ import java.util.List;
 public class LoanResponse {
 
     @Id
-    private int uuid;
+    private UUID uuid;
     private String status;
     private LoanResponse.RiskBand riskband;
     private Offer offer;
