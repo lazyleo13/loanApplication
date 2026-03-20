@@ -2,14 +2,15 @@ package com.loanApplication.application.service;
 
 import com.loanApplication.application.IEMICalculatorService;
 import com.loanApplication.application.IEligibilityCheckService;
-import com.loanApplication.application.IRiskBandService;
 import com.loanApplication.domain.LoanRequest;
-import com.loanApplication.domain.LoanResponse;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class EligibilityCheckServiceImpl implements IEligibilityCheckService {
 
     private final IEMICalculatorService emiCalculatorService;
@@ -36,7 +37,7 @@ public class EligibilityCheckServiceImpl implements IEligibilityCheckService {
         }
 
 
-        BigDecimal incomeValSixtyPercent = loanRequest.getApplicant().getIncome().multiply(new BigDecimal(0.6));
+        BigDecimal incomeValSixtyPercent = loanRequest.getApplicant().getIncome().multiply(new BigDecimal("0.6"));
         BigDecimal principalAmt = loanRequest.getLoan().getAmount();
         BigDecimal emi = emiCalculatorService.calculateEmi(principalAmt,new BigDecimal(12),tenure);
 

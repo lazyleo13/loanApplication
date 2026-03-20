@@ -2,6 +2,9 @@ package com.loanApplication.application.service;
 
 import com.loanApplication.application.IRiskBandService;
 import com.loanApplication.domain.LoanResponse;
+import org.springframework.stereotype.Service;
+
+@Service
 
 public class RiskBandServiceImpl implements IRiskBandService {
 

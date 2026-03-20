@@ -5,10 +5,11 @@ import com.loanApplication.application.IRiskBandService;
 import com.loanApplication.domain.Applicant;
 import com.loanApplication.domain.LoanRequest;
 import com.loanApplication.domain.LoanResponse;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
+@Service
 public class InterestRateCalculationServiceImpl implements IInterestRateCalculationService {
 
     public final BigDecimal baseRate = new BigDecimal(12);

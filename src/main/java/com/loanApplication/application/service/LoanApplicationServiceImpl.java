@@ -4,11 +4,13 @@ import com.loanApplication.application.*;
 import com.loanApplication.domain.LoanRequest;
 import com.loanApplication.domain.LoanResponse;
 import com.loanApplication.domain.Offer;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class LoanApplicationServiceImpl implements ILoanApplicationService {
 
     private final IEligibilityCheckService eligibilityCheckService;
@@ -54,7 +56,7 @@ public class LoanApplicationServiceImpl implements ILoanApplicationService {
 
         return LoanResponse.builder().uuid(UUID.randomUUID())
                 .status("APPROVED")
-                .riskband(riskBand)
+                .riskBand(riskBand)
                 .offer(Offer.builder()
                         .emi(emi).interestRate(rate)
                         .tenureMonths(loanRequest.getLoan().getTenureMonths()).totalPayable(totalPayable).build()).build();

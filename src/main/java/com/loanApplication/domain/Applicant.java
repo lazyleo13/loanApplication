@@ -1,5 +1,6 @@
 package com.loanApplication.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
@@ -8,6 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
 
@@ -17,6 +19,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Applicant {
 
     @NotNull
@@ -26,7 +29,8 @@ public class Applicant {
     @Max(value =60 , message = "Maximum Age for Loan Application is 60")
     private int age;
 
-    @DecimalMin(value = "0.00", message = "Income must be greater than 10,000")
+    @DecimalMin(value = "0.01", message = "Income must be greater than 0")
+    @JsonProperty("monthlyIncome")
     private BigDecimal income;
 
     @Range(min=300,max=900,message = "Credit Score is not between 300-900")

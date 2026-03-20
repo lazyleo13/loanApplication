@@ -1,5 +1,6 @@
 package com.loanApplication.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -15,10 +16,12 @@ import java.util.UUID;
 public class LoanResponse {
 
     @Id
+    @JsonProperty("applicationId")
     private UUID uuid;
     private String status;
-    private LoanResponse.RiskBand riskband;
+    private LoanResponse.RiskBand riskBand;
     private Offer offer;
+    @JsonProperty("rejectionReasons")
     private List<String> rejectedReasons;
     public enum RiskBand {
         LOW("LOW"),
